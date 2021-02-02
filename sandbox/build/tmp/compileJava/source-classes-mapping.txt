@@ -1,2 +1,2 @@
-MyFirstProgram.java
- MyFirstProgram
+rumyantseva/sandbox/MyFirstProgram.java
+ rumyantseva.sandbox.MyFirstProgram
