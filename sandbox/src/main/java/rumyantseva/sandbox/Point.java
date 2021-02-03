@@ -6,14 +6,15 @@ public class Point {
   public double y;
 
 
-  public double distanceconstrmet1(Point p) {
-    return Math.sqrt((p.x - this.x) * (p.y - this.y));
+  public double distanceconstrmet(Point p) {
+    return Math.sqrt((p.x - this.x)*(p.x - this.x) + (p.y - this.y)*(p.y - this.y));
 
   }
 
-  public double distanceconstrmet2(double a, double b) {
-//    return Math.sqrt((a - this.x) * (b - this.y));
-    return Math.sqrt( Math.abs(a - this.x) * Math.abs(b - this.y));
+  public double distanceconstrmet(double a, double b) {
+
+    return Math.sqrt((a - this.x)*(a - this.x) + (b - this.y)*(b - this.y));
 
   }
+
 }

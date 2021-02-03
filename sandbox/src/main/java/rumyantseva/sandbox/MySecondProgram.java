@@ -27,13 +27,13 @@ public class MySecondProgram {
 
     Point p1 = new Point();
     Point p2 = new Point();
-    p1.x = 4;
-    p2.x = 8;
-    p1.y = 5;
-    p2.y = 12;
+    p1.x = 15;
+    p2.x = 10;
+    p1.y = 25;
+    p2.y = 25;
     System.out.println ("3.Расстояние между точками p1 и p2 = " + distance(p1, p2));
 
-    System.out.println ("4.Расстояние между точками p1 и p2 = " + p1.distanceconstrmet1(p2));
+    System.out.println ("4.Расстояние между точками p1 и p2 = " + p1.distanceconstrmet(p2));
 
 
 
@@ -43,7 +43,7 @@ public class MySecondProgram {
     p4.x = 10;
     p3.y = 15;
     p4.y = 20;
-    System.out.println ("4. Расстояние между точками p3 и p4 = " + p3.distanceconstrmet1(p4));
+    System.out.println ("4. Расстояние между точками p3 и p4 = " + p3.distanceconstrmet(p4));
 
 
 
@@ -52,7 +52,9 @@ public class MySecondProgram {
     p5.x = 30;
     p5.y = 50;
     x1 = 200;
-    System.out.println ("4. Расстояние между точками p5 и произвольной точкой = " + p5.distanceconstrmet2(x1, y1));
+    System.out.println ("4. Расстояние между точками p5 и произвольной точкой = " + p5.distanceconstrmet(x1, y1));
+
+
 
 
 
@@ -73,18 +75,18 @@ public class MySecondProgram {
   }
 
   public static double distancefunc (Distance dd) {
-    return Math.sqrt((dd.x2 - dd.x1) * (dd.y2 - dd.y1));
+    return Math.sqrt((dd.x2 - dd.x1) * (dd.x2 - dd.x1) + (dd.y2 - dd.y1) * (dd.y2 - dd.y1));
 
   }
 
   public static double distancefunc (Pointdistanceconstr pp) {
-    return Math.sqrt((pp.x2 - pp.x1) * (pp.y2 - pp.y1));
+    return Math.sqrt((pp.x2 - pp.x1) * (pp.x2 - pp.x1) + (pp.y2 - pp.y1) * (pp.y2 - pp.y1));
 
   }
 
   //2
   public static double distance (Point p1, Point p2) {
-    return Math.sqrt((p2.x - p1.x) * (p2.y - p1.y));
+    return Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) +  (p2.y - p1.y)* (p2.y - p1.y));
 
 
   }

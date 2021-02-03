@@ -4,4 +4,4 @@ public class Square {
 
   public double k;
 
-  }
+}
