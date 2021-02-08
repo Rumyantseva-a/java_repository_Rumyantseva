@@ -6,7 +6,7 @@ public class SquareTests {
 
   @Test
   public void testArea () {
-    Squareconstrmet s = new Squareconstrmet(5);
+    Square s = new Square(5);
     assert s.areaconstrmet() == 25;
   }
 }

@@ -41,29 +41,26 @@ public class MyFirstProgram {
         System.out.println("Площадь квадрата со стороной " + qwe + " = " + area(qwe));
 
 
-        Square sq = new Square();
-        sq.k = 5;
+        Square sq = new Square(5);
         System.out.println("Площадь квадрата со стороной " + sq.k + " = " + areafunc(sq));
 
-        Squareconstructor sqc = new Squareconstructor(4);
+        Square sqc = new Square(4);
         System.out.println("Площадь квадрата со стороной " + sqc.k + " = " + areafuncconst(sqc));
 
-        Squareconstrmet sqcm = new Squareconstrmet(43);
+        Square sqcm = new Square(43);
         System.out.println("Площадь квадрата со стороной " + sqcm.k + " = " + sqcm.areaconstrmet());
 
         double q = 4;
         double w = 10;
         System.out.println("Площадь прямоугольника со сторонами " + q + " и " + w +  " = " + area(q, w));
 
-        Rectangle rq  = new Rectangle();
-        rq.dl = 5;
-        rq.wi = 20;
+        Rectangle rq  = new Rectangle(5, 20);
         System.out.println("Площадь прямоугольника со сторонами " + rq.dl + " и " + rq.wi + " = " + areafunc(rq));
 
-        Rectangleconstructor rqc = new Rectangleconstructor(35, 48);
+        Rectangle rqc = new Rectangle(35, 48);
         System.out.println("Площадь прямоугольника со сторонами " + rqc.dl + " и " + rqc.wi +  " = " + areafuncconst(rqc));
 
-        Rectangleconstrmet rqcm = new Rectangleconstrmet(43, 12);
+        Rectangle rqcm = new Rectangle(43, 12);
         System.out.println("Площадь прямоугольника со сторонами " + rqcm.dl + " и " + rqcm.wi + " = " + rqcm.areaconstrmetrec());
     }
 
@@ -96,12 +93,12 @@ public class MyFirstProgram {
 
     }
 
-    public static double areafuncconst (Squareconstructor sqc) {
+    public static double areafuncconst (Square sqc) {
         return sqc.k * sqc.k;
 
     }
 
-    public static double areafuncconst (Rectangleconstructor rqc) {
+    public static double areafuncconst (Rectangle rqc) {
         return rqc.wi * rqc.dl;
 
     }

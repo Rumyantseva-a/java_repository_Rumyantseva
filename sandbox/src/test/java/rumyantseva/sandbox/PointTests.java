@@ -20,12 +20,8 @@ public class PointTests {
 
   @Test
   public void testPoint1 () {
-    Point p1 = new Point();
-    p1.x = 15;
-    p1.y = 25;
-    Point p2 = new Point();
-    p2.x = 15;
-    p2.y = 20;
+    Point p1 = new Point(15, 25);
+    Point p2 = new Point(15,20);
     Assert.assertEquals(p1.distanceconstrmet(p2), 5);
   }
 
