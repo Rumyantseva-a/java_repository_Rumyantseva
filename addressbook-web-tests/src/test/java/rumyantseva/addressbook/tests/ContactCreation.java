@@ -1,10 +1,11 @@
-package rumyantseva.addressbook;
+package rumyantseva.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import rumyantseva.addressbook.model.ContactData;
 
 public class ContactCreation {
   private WebDriver wd;
@@ -86,9 +87,9 @@ public class ContactCreation {
     wd.findElement(By.name("byear")).click();
     wd.findElement(By.name("byear")).clear();
     wd.findElement(By.name("byear")).sendKeys(contactData.getBirthyear());
-    wd.findElement(By.name("new_group")).click();
-    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    wd.findElement(By.name("new_group")).click();
+    //wd.findElement(By.name("new_group")).click();
+    //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    //wd.findElement(By.name("new_group")).click();
     wd.findElement(By.name("address2")).click();
     wd.findElement(By.name("address2")).clear();
     wd.findElement(By.name("address2")).sendKeys(contactData.getAddress2());

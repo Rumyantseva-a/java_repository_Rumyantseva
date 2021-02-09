@@ -1,4 +1,4 @@
-package rumyantseva.addressbook;
+package rumyantseva.addressbook.model;
 
 public class ContactData {
   private final String firstname;
@@ -15,7 +15,7 @@ public class ContactData {
   private final String birthday;
   private final String birthmonth;
   private final String birthyear;
-  private final String group;
+  //private final String group;
   private final String address2;
   private final String home;
 
@@ -34,7 +34,7 @@ public class ContactData {
     this.birthday = birthday;
     this.birthmonth = birthmonth;
     this.birthyear = birthyear;
-    this.group = group;
+    //this.group = group;
     this.address2 = address2;
     this.home = home;
   }
@@ -95,9 +95,9 @@ public class ContactData {
     return birthyear;
   }
 
-  public String getGroup() {
-    return group;
-  }
+  //public String getGroup() {
+    //return group;
+  //}
 
   public String getAddress2() {
     return address2;
