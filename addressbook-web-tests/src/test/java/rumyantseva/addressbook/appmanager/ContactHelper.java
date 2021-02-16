@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import rumyantseva.addressbook.model.ContactData;
+import rumyantseva.addressbook.model.GroupData;
 
 import static org.testng.Assert.assertTrue;
 
@@ -43,8 +44,6 @@ public class ContactHelper extends HelperBase{
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
-
-
     type(By.name("address2"), contactData.getAddress2());
   }
 
@@ -70,5 +69,17 @@ public class ContactHelper extends HelperBase{
   public void submitContactModification() {
    // click(By.name("update"));
     click(By.xpath("(//input[@name='update'])[2]"));
+  }
+
+  public void createContact(ContactData contact,boolean creation) {
+    initContactCreation();
+    fillFormContact(contact,true);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereaContact() {
+
+    return isElementPresent(By.name("selected[]"));
   }
 }

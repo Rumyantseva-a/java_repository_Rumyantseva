@@ -11,10 +11,8 @@ public class ContactCreation extends TestBase{
   public void testContactCreation() throws Exception {
 
     app.getNavigationHelper().gotoAddNewPage();
-    app.getContactHelper().initContactCreation();
-    app.getContactHelper().fillFormContact(new ContactData("Duliana", "Iosifovna", "Daropaeva", "uinikolaeva", "Bank3", "Moscow, Rublevka street", "1234567", "1234567", "1234567", "1234567", "nikolaeva@mmail.ru", "Pyataya","Moscow, Lenina street"), true);
-    app.getContactHelper().submitContactCreation();
-    app.getContactHelper().returnToHomePage();
+    app.getContactHelper().createContact(new ContactData("Duliana", "Iosifovna", "Daropaeva", "uinikolaeva", "Bank3", "Moscow, Rublevka street", "1234567", "1234567", "1234567", "1234567", "nikolaeva@mmail.ru", null,"Moscow, Lenina street"), true);
+
   }
 
 
