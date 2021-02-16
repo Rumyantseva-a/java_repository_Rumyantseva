@@ -17,9 +17,15 @@ public class HelperBase {
   }
 
   public void type(By locator, String text) {
-    wd.findElement(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
+    click(locator);
+    //если требуется оставить поле заполненным по умолчанию - НЕ перезаполнять;
+    if (text != null) {
+      String existingText = wd.findElement(locator).getAttribute("value");
+      if (! text.equals(existingText)) {
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
+      }
+    }
   }
 
   public boolean isAlertPresent() {

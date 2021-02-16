@@ -12,7 +12,7 @@ public class ContactCreation extends TestBase{
 
     app.getNavigationHelper().gotoAddNewPage();
     app.getContactHelper().initContactCreation();
-    app.getContactHelper().fillFormContact(new ContactData("Uliana", "Iosifovna", "Voropaeva", "uinikolaeva", "Bank3", "Moscow, Rublevka street", "1234567", "1234567", "1234567", "1234567", "nikolaeva@mmail.ru", "Moscow, Lenina street"));
+    app.getContactHelper().fillFormContact(new ContactData("Duliana", "Iosifovna", "Daropaeva", "uinikolaeva", "Bank3", "Moscow, Rublevka street", "1234567", "1234567", "1234567", "1234567", "nikolaeva@mmail.ru", "Pyataya","Moscow, Lenina street"), true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToHomePage();
   }
