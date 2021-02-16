@@ -1,6 +1,7 @@
 package rumyantseva.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import rumyantseva.addressbook.model.ContactData;
 
@@ -8,7 +9,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ContactHelper extends HelperBase{
 
-  public ContactHelper(FirefoxDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
