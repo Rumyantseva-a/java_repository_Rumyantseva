@@ -3,7 +3,6 @@ package rumyantseva.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import rumyantseva.addressbook.model.GroupData;
-
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;

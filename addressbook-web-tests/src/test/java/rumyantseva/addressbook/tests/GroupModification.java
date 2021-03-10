@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import rumyantseva.addressbook.model.GroupData;
-
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +20,7 @@ public class GroupModification extends TestBase {
     List<GroupData> before = app.getGroupHelper().getGroupList();
     app.getGroupHelper().selectGroup(before.size() - 1);
     app.getGroupHelper().initGroupModification();
-    GroupData group = new GroupData(before.get(before.size() - 1).getId(), "1odPuataya1", "rty", "rty");
+    GroupData group = new GroupData(before.get(before.size() - 1).getId(), "661odPuataya1", "rty", "rty");
     app.getGroupHelper().fillGroupForm(group);
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();
