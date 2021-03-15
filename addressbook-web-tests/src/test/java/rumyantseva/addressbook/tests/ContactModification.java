@@ -2,11 +2,9 @@ package rumyantseva.addressbook.tests;
 
 import org.testng.annotations.Test;
 import org.testng.Assert;
-import org.openqa.selenium.By;
 import rumyantseva.addressbook.model.ContactData;
-import rumyantseva.addressbook.model.GroupData;
+
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 
@@ -15,7 +13,7 @@ public class ContactModification extends TestBase{
   @Test (enabled = false)
   public void testContactModification() throws Exception {
 
-    if (! app.getContactHelper().isThereaContact()) {app.getNavigationHelper().gotoAddNewPage();
+    if (! app.getContactHelper().isThereaContact()) {app.goTo().gotoAddNewPage();
       app.getContactHelper().createContact(new ContactData("HUliana", "Hosifovna", "Haropaeva", "Muinikolaeva", "MBank3", "MMoscow, Rublevka street", "01234567", "01234567", "01234567", "01234567", "Mnikolaeva@mmail.ru","[none]","MMoscow, Lenina street"), true);
     }
     List<ContactData> before = app.getContactHelper().getContactList();
