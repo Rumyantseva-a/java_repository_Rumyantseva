@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 public class ContactDeletion extends TestBase{
 
-  @Test
+  @Test (enabled = false)
   public void testContactDeletion() throws Exception {
 
     if (! app.getContactHelper().isThereaContact()) {

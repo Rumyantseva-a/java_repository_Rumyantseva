@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ContactModification extends TestBase{
 
-  @Test
+  @Test (enabled = false)
   public void testContactModification() throws Exception {
 
     if (! app.getContactHelper().isThereaContact()) {app.getNavigationHelper().gotoAddNewPage();
