@@ -29,13 +29,20 @@ public class ContactModification extends TestBase{
 
   @Test
   public void testContactModification() throws Exception {
+
     Contacts before = app.contact().all();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
-            .withId(modifiedContact.getId()).withFirstName("Ehygbj").withLastName("Ttggfrg").withGroup("[none]");
+            .withId(modifiedContact.getId()).withFirstName("Opppppygbj").withLastName("Jhhgfghgfrg").withGroup("[none]");
     app.contact().modify(contact, false);
+    assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.contact().all();
-    assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }
 }
+
+
+
+
+
+
