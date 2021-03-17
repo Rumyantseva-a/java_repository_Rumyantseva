@@ -17,6 +17,18 @@ public class ContactData {
   private String email;
   private String group;
   private String address2;
+  private String allPhones;
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+
 
 
   public int getId() {
@@ -174,4 +186,6 @@ public class ContactData {
   public int hashCode() {
     return Objects.hash(id, firstname, lastname);
   }
+
+
 }

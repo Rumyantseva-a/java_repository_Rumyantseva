@@ -1,12 +1,11 @@
 package rumyantseva.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import rumyantseva.addressbook.model.ContactData;
 import rumyantseva.addressbook.model.Contacts;
-
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
@@ -27,12 +26,21 @@ public class ContactPhoneTest extends TestBase{
     ContactData contact = app.contact().all1().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getPhone1(), equalTo(cleaned(contactInfoFromEditForm.getPhone1())));
-    assertThat(contact.getPhone2(), equalTo(cleaned(contactInfoFromEditForm.getPhone2())));
-    assertThat(contact.getPhone3(), equalTo(cleaned(contactInfoFromEditForm.getPhone3())));
+    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+
+    //assertThat(contact.getPhone1(), equalTo(cleaned(contactInfoFromEditForm.getPhone1())));
+    //assertThat(contact.getPhone2(), equalTo(cleaned(contactInfoFromEditForm.getPhone2())));
+    //assertThat(contact.getPhone3(), equalTo(cleaned(contactInfoFromEditForm.getPhone3())));
   }
 
-  public String cleaned (String phone) {
+  private String mergePhones(ContactData contact) {
+    return Arrays.asList(contact.getPhone1(), contact.getPhone2(), contact.getPhone3())
+            .stream().filter((s) -> ! s.equals(""))
+            .map(ContactPhoneTest::cleaned)
+            .collect(Collectors.joining("\n"));
+  }
+
+  public static String cleaned (String phone) {
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
