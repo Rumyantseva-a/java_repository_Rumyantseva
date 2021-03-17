@@ -7,9 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import rumyantseva.addressbook.model.GroupData;
 import rumyantseva.addressbook.model.Groups;
-
 import java.util.Set;
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 import static org.testng.Assert.*;
