@@ -58,6 +58,7 @@ public class ContactCreation extends TestBase{
 
   @Test (dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) throws Exception {
+    app.goTo().homePage();
     Contacts before = app.contact().all();
     app.goTo().addNewPage();
     //File photo = new File("src/test/resources/IMG_1011in.jpg");
