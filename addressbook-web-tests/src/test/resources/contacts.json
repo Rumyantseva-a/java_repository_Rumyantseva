@@ -10,5 +10,11 @@
     "middlename": "Middlename1",
     "lastname": "Lastname1",
     "group": "[none]"
+  },
+  {
+    "firstname": "Firstname2",
+    "middlename": "Middlename2",
+    "lastname": "Lastname2",
+    "group": "[none]"
   }
 ]
