@@ -1,0 +1,32 @@
+[
+  {
+    "firstname": "Firstname 0",
+    "middlename": "Middlename\n0",
+    "lastname": "Lastname\n0",
+    "group": "[none]"
+  },
+  {
+    "firstname": "Firstname 1",
+    "middlename": "Middlename\n1",
+    "lastname": "Lastname\n1",
+    "group": "[none]"
+  },
+  {
+    "firstname": "Firstname 2",
+    "middlename": "Middlename\n2",
+    "lastname": "Lastname\n2",
+    "group": "[none]"
+  },
+  {
+    "firstname": "Firstname 3",
+    "middlename": "Middlename\n3",
+    "lastname": "Lastname\n3",
+    "group": "[none]"
+  },
+  {
+    "firstname": "Firstname 4",
+    "middlename": "Middlename\n4",
+    "lastname": "Lastname\n4",
+    "group": "[none]"
+  }
+]

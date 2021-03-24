@@ -1,0 +1,42 @@
+<list>
+  <contact>
+    <firstname>Firstname 0</firstname>
+    <middlename>Middlename
+0</middlename>
+    <lastname>Lastname
+0</lastname>
+    <group>[none]</group>
+  </contact>
+  <contact>
+    <firstname>Firstname 1</firstname>
+    <middlename>Middlename
+1</middlename>
+    <lastname>Lastname
+1</lastname>
+    <group>[none]</group>
+  </contact>
+  <contact>
+    <firstname>Firstname 2</firstname>
+    <middlename>Middlename
+2</middlename>
+    <lastname>Lastname
+2</lastname>
+    <group>[none]</group>
+  </contact>
+  <contact>
+    <firstname>Firstname 3</firstname>
+    <middlename>Middlename
+3</middlename>
+    <lastname>Lastname
+3</lastname>
+    <group>[none]</group>
+  </contact>
+  <contact>
+    <firstname>Firstname 4</firstname>
+    <middlename>Middlename
+4</middlename>
+    <lastname>Lastname
+4</lastname>
+    <group>[none]</group>
+  </contact>
+</list>
