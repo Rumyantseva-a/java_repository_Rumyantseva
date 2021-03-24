@@ -10,6 +10,7 @@ import rumyantseva.addressbook.model.Groups;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
@@ -33,10 +34,11 @@ public class ContactModification extends TestBase{
     Contacts before = app.contact().all();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
-            .withId(modifiedContact.getId()).withFirstName("Opppppygbj").withLastName("Jhhgfghgfrg").withGroup("[none]");
+            .withId(modifiedContact.getId()).withFirstName("Vlad").withLastName("Jhhgfghgfrg").withGroup("[none]");
     app.contact().modify(contact, false);
     assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.contact().all();
+
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }
 }

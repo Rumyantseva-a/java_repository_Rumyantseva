@@ -104,10 +104,10 @@ public class ContactHelper extends HelperBase{
 
   public void modify(ContactData contact, boolean creation) {
     selectContactById(contact.getId());
-    initContactModification();
+    initContactModification(contact.getId());
     fillFormContact(contact, creation);
     submitContactModification();
-    //contactCache = null;
+    contactCache = null;
     returnToHomePage();
 
   }
@@ -147,7 +147,7 @@ public class ContactHelper extends HelperBase{
 
   public Contacts all() {
     if (contactCache != null) {
-      return new Contacts(contactCache);
+  //    return new Contacts(contactCache);
     }
     contactCache = new Contacts();
     List<WebElement> elements = wd.findElements (By.cssSelector("tr[name=entry]"));
