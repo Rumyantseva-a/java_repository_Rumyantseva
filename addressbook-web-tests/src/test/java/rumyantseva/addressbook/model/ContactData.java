@@ -3,57 +3,104 @@ package rumyantseva.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+
+  @Id
+  @Column (name = "id")
   @XStreamOmitField
   private int id = Integer.MAX_VALUE;
+
+  @Column (name = "firstname")
   @Expose
   private String firstname;
+
+  @Column (name = "middlename")
   @Expose
   private String middlename;
+
+  @Column (name = "lastname")
   @Expose
   private String lastname;
+
+
+  @Transient
   @Expose
   private String nickname;
+
+  @Transient
   @Expose
   private String company;
+
+  @Transient
   @Expose
   private String address1;
+
+  @Column (name = "home")
+  @Type(type = "text")
   @Expose
   private String phone1;
+
+  @Column (name = "mobile")
+  @Type(type = "text")
   @Expose
   private String phone2;
+
+  @Column (name = "work")
+  @Type(type = "text")
   @Expose
   private String phone3;
+
+  @Transient
   @Expose
   private String phone4;
+
+  @Transient
   @Expose
   private String email;
+
+  @Transient
   @Expose
   private String email2;
+
+  @Transient
   @Expose
   private String email3;
+
+  @Transient
   @Expose
   private String group;
+
+  @Transient
   @Expose
   private String address2;
+
+  @Transient
   private String allPhones;
+
+  @Transient
   private String allEmails;
 
+  @Column (name = "photo")
+  @Type(type = "text")
+  private String photo;
+
   public File getPhoto() {
-    return photo;
+    return new File (photo);
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
-
-  private File photo;
 
   public String getAllPhones() {
     return allPhones;
@@ -84,9 +131,6 @@ public class ContactData {
     return this;
   }
 
-  //public void setId(int id) {
-  //  this.id = id;
-  //}
 
   public ContactData withFirstName(String firstname) {
     this.firstname = firstname;
