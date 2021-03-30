@@ -1,17 +1,22 @@
 [
   {
-    "name": "test 0",
-    "header": "header\n0",
-    "footer": "footer\n0"
+    "name": "qtest 0",
+    "header": "qheader\r\n0",
+    "footer": "qfooter\r\n0"
   },
   {
-    "name": "test 1",
-    "header": "header\n1",
-    "footer": "footer\n1"
+    "name": "qtest 1",
+    "header": "qheader\r\n1",
+    "footer": "qfooter\r\n1"
   },
   {
-    "name": "test 2",
-    "header": "header\n2",
-    "footer": "footer\n2"
+    "name": "qtest 2",
+    "header": "qheader\r\n2",
+    "footer": "qfooter\r\n2"
+  },
+  {
+    "name": "qtest 3",
+    "header": "qheader\r\n3",
+    "footer": "qfooter\r\n3"
   }
 ]
