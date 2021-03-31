@@ -16,7 +16,9 @@ public class ContactAddressTest extends TestBase{
   public void ensurePreconditions() {
     app.goTo().homePage();
     if (app.contact().all().size() == 0) {
-      app.contact().create(new ContactData().withFirstName("Fhygbj").withLastName("Atggfrg").withGroup("[none]").withPhone1("1110").withPhone2("2220").withPhone3("3330").withEmail("fdgf@mail.ru").withAddress1("Rublevka street"), true);
+      app.contact().create(new ContactData().withFirstName("Fhygbj").withLastName("Atggfrg")
+              //.withGroup("[none]")
+              .withPhone1("1110").withPhone2("2220").withPhone3("3330").withEmail("fdgf@mail.ru").withAddress1("Rublevka street"), true);
     }
   }
 

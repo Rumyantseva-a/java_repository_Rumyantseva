@@ -7,7 +7,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -75,9 +77,9 @@ public class ContactData {
   @Expose
   private String email3;
 
-  @Transient
-  @Expose
-  private String group;
+  //@Transient
+  //@Expose
+  //private String group;
 
   @Transient
   @Expose
@@ -92,6 +94,15 @@ public class ContactData {
   @Column (name = "photo")
   @Type(type = "text")
   private String photo;
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
+
+  public Groups getGroups() {
+    return new Groups (groups);
+  }
 
   public File getPhoto() {
     if (photo != null)
@@ -133,23 +144,6 @@ public class ContactData {
     return this;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename) && Objects.equals(lastname, that.lastname) && Objects.equals(phone1, that.phone1) && Objects.equals(phone2, that.phone2) && Objects.equals(phone3, that.phone3);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, firstname, middlename, lastname, phone1, phone2, phone3);
-  }
-
-  public ContactData withFirstName(String firstname) {
-    this.firstname = firstname;
-    return this;
-  }
 
   public ContactData withMiddleName(String middlename) {
     this.middlename = middlename;
@@ -212,10 +206,10 @@ public class ContactData {
   }
 
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
+  //public ContactData withGroup(String group) {
+  //  this.group = group;
+  //  return this;
+  //}
 
   public ContactData withAddress2(String address2) {
     this.address2 = address2;
@@ -276,9 +270,9 @@ public class ContactData {
     return email3;
   }
 
-  public String getGroup() {
-    return group;
-  }
+  //public String getGroup() {
+  //  return group;
+  //}
 
   public String getAddress2() {
     return address2;
@@ -298,5 +292,27 @@ public class ContactData {
             '}';
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename) && Objects.equals(lastname, that.lastname) && Objects.equals(phone1, that.phone1) && Objects.equals(phone2, that.phone2) && Objects.equals(phone3, that.phone3);
+  }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, firstname, middlename, lastname, phone1, phone2, phone3);
+  }
+
+  public ContactData withFirstName(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+  }
 }

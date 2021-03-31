@@ -20,7 +20,9 @@ public class ContactModification extends TestBase{
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0) {
       app.goTo().addNewPage();
-      app.contact().create(new ContactData().withFirstName("Fhygbj").withLastName("Atggfrg").withGroup("[none]"), true);
+      app.contact().create(new ContactData().withFirstName("Fhygbj").withLastName("Atggfrg")
+              //.withGroup("[none]")
+              , true);
     }
   }
 

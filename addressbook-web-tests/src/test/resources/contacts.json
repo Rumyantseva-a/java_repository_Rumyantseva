@@ -5,8 +5,7 @@
     "lastname": "Lqastname0",
     "phone1": "0",
     "phone2": "0",
-    "phone3": "0",
-    "group": "[none]"
+    "phone3": "0"
   },
   {
     "firstname": "Fqirstname1",
@@ -14,7 +13,6 @@
     "lastname": "Lqastname1",
     "phone1": "1",
     "phone2": "1",
-    "phone3": "1",
-    "group": "[none]"
+    "phone3": "1"
   }
 ]
