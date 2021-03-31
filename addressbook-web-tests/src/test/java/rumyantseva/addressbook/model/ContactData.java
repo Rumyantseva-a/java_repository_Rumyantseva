@@ -79,7 +79,7 @@ public class ContactData {
 
   //@Transient
   //@Expose
-  //private String group;
+  //private String groups;
 
   @Transient
   @Expose
@@ -280,6 +280,19 @@ public class ContactData {
 
 
   @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename) && Objects.equals(lastname, that.lastname) && Objects.equals(phone1, that.phone1) && Objects.equals(phone2, that.phone2) && Objects.equals(phone3, that.phone3) && Objects.equals(groups, that.groups);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, firstname, middlename, lastname, phone1, phone2, phone3, groups);
+  }
+
+  @Override
   public String toString() {
     return "ContactData{" +
             "id=" + id +
@@ -289,20 +302,8 @@ public class ContactData {
             ", phone1='" + phone1 + '\'' +
             ", phone2='" + phone2 + '\'' +
             ", phone3='" + phone3 + '\'' +
+            ", groups=" + groups +
             '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename) && Objects.equals(lastname, that.lastname) && Objects.equals(phone1, that.phone1) && Objects.equals(phone2, that.phone2) && Objects.equals(phone3, that.phone3);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, firstname, middlename, lastname, phone1, phone2, phone3);
   }
 
   public ContactData withFirstName(String firstname) {
