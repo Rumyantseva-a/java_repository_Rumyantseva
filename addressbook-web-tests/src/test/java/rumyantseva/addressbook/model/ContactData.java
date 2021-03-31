@@ -104,6 +104,11 @@ public class ContactData {
     return new Groups (groups);
   }
 
+  public ContactData withGroups(GroupData group) {
+    this.groups.add(group);
+    return this;
+  }
+
   public File getPhoto() {
     if (photo != null)
       return new File(photo);
@@ -138,6 +143,7 @@ public class ContactData {
   public int getId() {
     return id;
   }
+
 
   public ContactData withId(int id) {
     this.id = id;
@@ -206,10 +212,7 @@ public class ContactData {
   }
 
 
-  //public ContactData withGroup(String group) {
-  //  this.group = group;
-  //  return this;
-  //}
+
 
   public ContactData withAddress2(String address2) {
     this.address2 = address2;

@@ -96,6 +96,7 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("(//input[@name='update'])[2]"));
   }
 
+
   public void create(ContactData contact, boolean creation) {
     initContactCreation();
     fillFormContact(contact, creation);
@@ -121,6 +122,42 @@ public class ContactHelper extends HelperBase{
     contactCache = null;
     returnToHomePage();
   }
+
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    initContactAddingToGroup();
+    SelectGroupById(group.getId());
+    addSelectedContactToGroup();
+    returnToHomePage();
+  }
+
+  public void initContactAddingToGroup() {
+    click(By.name("to_group"));
+  }
+
+  public void SelectGroupById(int group_id) {
+//    wd.findElement(By.cssSelector("select[name='to_group']option[value='" + group_id + "']")).click();
+    String groupId = Integer.toString(group_id);
+    new Select ( wd.findElement(By.name("to_group"))).selectByValue(groupId);
+    //new Select2(wd.findElement(By.name("to_group"))).selectByVisibleText("qtest 1");
+
+  }
+
+  public void addSelectedContactToGroup() {
+   // click(By.name("add"));
+  //  click(By.xpath("//input[@name='add']"));
+    click(By.xpath("//input[@value='Add to']"));
+
+
+  }
+
+  //public void goToGroupPageWithSelectedGroup(int group_id) {
+  //  click(By.xpath("//a[@href='./?group="+ group_id + "']"));
+  //}
+
+
+
+
 
   public boolean isThereaContact() {
     return isElementPresent(By.name("selected[]"));
@@ -211,4 +248,8 @@ public class ContactHelper extends HelperBase{
     //wd.findElement(By.cssSelector(String.format("a[href=edit.php?id=%s]", id))).click();
 
   }
+
+
+
+
 }
