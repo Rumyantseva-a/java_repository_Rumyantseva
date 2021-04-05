@@ -41,5 +41,6 @@ public class DbHelper {
     session.getTransaction().commit();
     session.close();
     return new Contacts(result);
+
   }
 }

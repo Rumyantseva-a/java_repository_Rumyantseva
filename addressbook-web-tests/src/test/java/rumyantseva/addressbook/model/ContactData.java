@@ -108,6 +108,10 @@ public class ContactData {
     this.groups.add(group);
     return this;
   }
+  public ContactData withoutGroups(GroupData group) {
+    this.groups.remove(group);
+    return this;
+  }
 
   public File getPhoto() {
     if (photo != null)
