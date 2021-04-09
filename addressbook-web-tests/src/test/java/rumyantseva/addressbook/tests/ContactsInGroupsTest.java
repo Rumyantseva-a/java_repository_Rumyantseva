@@ -47,12 +47,17 @@ public class ContactsInGroupsTest extends TestBase{
     Groups groups = app.db().groups();
     ContactData addedContactInGroup = before.iterator().next();
     GroupData selectedGroup = groups.iterator().next();
-    //ContactData contact = new ContactData();
-    //GroupData group = new GroupData();
-            //.withId(addedContactInGroup.getId()).withFirstName("Vladsss").withLastName("Jhhgfghgfrg").withMiddleName("Jhhgfghgfrg")
-            //.withPhone1("123").withPhone2("123").withPhone3("123");
+    Groups groupsOfContact = addedContactInGroup.getGroups();
+
+    //если контакт уже в выбранной группе - предварительно удалить его из нее
+    if (groupsOfContact.contains(selectedGroup)) {
+      app.goTo().homePage();
+      app.contact().deleteFromGroup(addedContactInGroup, selectedGroup);
+      //before = app.db().contacts();
+    }
+
     app.goTo().homePage();
-    app.contact().addToGroup(addedContactInGroup, selectedGroup);
+    app.contact().deleteFromGroup(addedContactInGroup, selectedGroup);
     //assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(addedContactInGroup).withAdded(addedContactInGroup.withGroups(selectedGroup))));
