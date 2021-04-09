@@ -12,13 +12,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.MatchResult;
 
 public class ApplicationManager {
   private final Properties properties;
-  WebDriver wd;
+  private WebDriver wd;
 
   private String browser;
-
+  private RegistrationHelper registrationHelper;
+  private FtpHelper ftp;
 
 
   public ApplicationManager(String browser)  {
@@ -32,24 +34,13 @@ public class ApplicationManager {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
-    if (browser.equals(BrowserType.FIREFOX)) {
-      wd = new FirefoxDriver();
-    } else if (browser.equals(BrowserType.CHROME)) {
-      wd = new ChromeDriver();
-    } else if (browser.equals(BrowserType.IE)) {
-      wd = new InternetExplorerDriver();
-    }
-
-
-    wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-    wd.get(properties.getProperty("web.baseUrl"));
-
-
   }
 
   public void stop() {
-    logout();
-    wd.quit();
+    if (wd != null) {
+      //logout();
+      wd.quit();
+    }
   }
 
   public void logout() {
@@ -65,4 +56,34 @@ public class ApplicationManager {
   }
 
 
+  public RegistrationHelper registration() {
+    if (registrationHelper == null) {
+      registrationHelper = new RegistrationHelper(this);
+    }
+    return registrationHelper;
+  }
+
+  public FtpHelper ftp() {
+    if (ftp == null) {
+      ftp = new FtpHelper(this);
+    }
+    return ftp;
+  }
+
+  public WebDriver getDriver() {
+    if (wd == null) {
+      if (browser.equals(BrowserType.FIREFOX)) {
+        wd = new FirefoxDriver();
+      } else if (browser.equals(BrowserType.CHROME)) {
+        wd = new ChromeDriver();
+      } else if (browser.equals(BrowserType.IE)) {
+        wd = new InternetExplorerDriver();
+      }
+
+      wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+      wd.get(properties.getProperty("web.baseUrl"));
+    }
+
+    return wd;
+  }
 }

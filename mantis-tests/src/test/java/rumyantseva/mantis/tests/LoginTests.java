@@ -2,6 +2,7 @@ package rumyantseva.mantis.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import rumyantseva.mantis.appmanager.HttpSession;
 
 import java.io.IOException;
 
