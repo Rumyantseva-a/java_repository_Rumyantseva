@@ -3,6 +3,8 @@ package rumyantseva.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import rumyantseva.addressbook.model.ContactData;
@@ -47,7 +49,28 @@ public class ContactsInGroupsTest extends TestBase{
     Groups groups = app.db().groups();
     ContactData addedContactInGroup = before.iterator().next();
     GroupData selectedGroup = groups.iterator().next();
-    Groups groupsOfContact = addedContactInGroup.getGroups();
+    Groups groupsOfContact = new Groups();
+
+    for (ContactData selContact : before)
+    {
+      System.out.println(selContact.getId());
+      int st = 0;
+
+      for (GroupData selGroup : groups)
+      {
+        if (!selContact.getGroups().contains(selGroup))
+        {
+          System.out.println("   -" + selGroup.getId());
+          addedContactInGroup = selContact;
+          selectedGroup = selGroup;
+          groupsOfContact = addedContactInGroup.getGroups();
+          st = 1;
+          break;
+        }
+
+      }
+      if (st > 0) break;
+    }
 
     //если контакт уже в выбранной группе - предварительно удалить его из нее
     if (groupsOfContact.contains(selectedGroup)) {
@@ -57,10 +80,16 @@ public class ContactsInGroupsTest extends TestBase{
     }
 
     app.goTo().homePage();
-    app.contact().deleteFromGroup(addedContactInGroup, selectedGroup);
+    app.contact().addToGroup(addedContactInGroup, selectedGroup);
     //assertThat(app.contact().count(), equalTo(before.size()));
     Contacts after = app.db().contacts();
-    assertThat(after, equalTo(before.without(addedContactInGroup).withAdded(addedContactInGroup.withGroups(selectedGroup))));
+
+    Groups afterContactGroups = after.getContactById(addedContactInGroup.getId()).getGroups();
+    Groups beforeGroupsOfContact = groupsOfContact;
+    beforeGroupsOfContact.add(selectedGroup);
+
+    //assertThat(after, equalTo(before.without(addedContactInGroup).withAdded(addedContactInGroup.withGroups(selectedGroup))));
+    assertThat(afterContactGroups , equalTo(beforeGroupsOfContact));
     verifyContactListInUI();
   }
 

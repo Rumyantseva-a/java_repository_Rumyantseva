@@ -59,22 +59,50 @@ public class ContactDeletionFromGroupTest extends TestBase {
     ContactData deletedContactFromGroup = before.iterator().next();
     Groups groups = deletedContactFromGroup.getGroups();
     GroupData selectedGroup = new GroupData();
-    if (groups.size() == 0) {
-      Groups groupsAll = app.db().groups();
-       selectedGroup = groupsAll.iterator().next();
+    Groups groupsOfContact = new Groups();
+
+    for (ContactData selContact : before)
+    {
+      System.out.println(selContact.getId());
+      int st = 0;
+
+      for (GroupData selGroup : selContact.getGroups())
+      {
+        if (selContact.getGroups().contains(selGroup))
+        {
+          System.out.println("   +" + selGroup.getId());
+          deletedContactFromGroup = selContact;
+          selectedGroup = selGroup;
+          groupsOfContact = deletedContactFromGroup.getGroups();
+          st = 1;
+          break;
+        }
+
+      }
+      if (st > 0) break;
+    }
+
+    if (!groupsOfContact.contains(selectedGroup)) {
+      //Groups groupsAll = app.db().groups();
+      //selectedGroup = groupsAll.iterator().next();
       app.goTo().homePage();
       app.contact().addToGroup(deletedContactFromGroup, selectedGroup);
      // before = app.db().contacts();
      // deletedContactFromGroup = deletedContactFromGroup.withGroups(selectedGroup);
     }
-    else
-    {
-       selectedGroup = groups.iterator().next();
-    }
+
+
     app.goTo().homePage();
     app.contact().deleteFromGroup(deletedContactFromGroup, selectedGroup);
     Contacts after = app.db().contacts();
-    assertThat(after, equalTo(before.without(deletedContactFromGroup).withAdded(deletedContactFromGroup.withoutGroups(selectedGroup))));
+
+    Groups afterContactGroups = after.getContactById(deletedContactFromGroup.getId()).getGroups();
+    Groups beforeGroupsOfContact = groupsOfContact;
+    beforeGroupsOfContact.remove(selectedGroup);
+
+    assertThat(afterContactGroups , equalTo(beforeGroupsOfContact));
+
+    //assertThat(after, equalTo(before.without(deletedContactFromGroup).withAdded(deletedContactFromGroup.withoutGroups(selectedGroup))));
     verifyContactListInUI();
   }
 

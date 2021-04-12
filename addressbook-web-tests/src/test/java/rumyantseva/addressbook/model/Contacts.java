@@ -40,4 +40,13 @@ public class Contacts extends ForwardingSet<ContactData>{
     return contacts;
   }
 
+
+  public ContactData getContactById (int id) {
+    for (ContactData selContact : this)
+    {
+      if (selContact.getId() == id)
+        return selContact;
+    }
+    return null;
+  }
 }
