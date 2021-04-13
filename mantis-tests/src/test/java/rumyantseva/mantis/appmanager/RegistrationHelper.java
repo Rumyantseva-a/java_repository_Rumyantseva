@@ -2,7 +2,7 @@ package rumyantseva.mantis.appmanager;
 
 import org.openqa.selenium.By;
 
-public class RegistrationHelper extends HelperBase{
+public class RegistrationHelper extends HelperBase {
 
 
   public RegistrationHelper(ApplicationManager app) {
@@ -21,11 +21,44 @@ public class RegistrationHelper extends HelperBase{
     wd.get(confirmationLink);
     type(By.name("password"), password);
     type(By.name("password_confirm"), password);
-   // click(By.cssSelector("span[class=\"submit-button\"]"));
+    // click(By.cssSelector("span[class=\"submit-button\"]"));
     //click(By.xpath("//span[@class=\"submit-button\"]"));
     //click(By.xpath("//span[@class='submit-button']"));
     click(By.xpath("//*[.='Изменить пользователя'] "));
 
 
   }
+
+  public void adminLogin(String username, String password) {
+    wd.get(app.getProperty("web.baseUrl") + "/login_page.php");
+    type(By.name("username"), username);
+    click(By.cssSelector("input[value='Вход']"));
+    type(By.name("password"), password);
+    click(By.cssSelector("input[value='Вход']"));
+  }
+
+  public void changeUsersPassword (String user) {
+    goToManageOverviewPage();
+    goToManageUserPage();
+    selectUser(user);
+    changePassword();
+  }
+
+  public void goToManageOverviewPage() {
+    click(By.xpath("//a[@href='/mantisbt-2.25.0/manage_overview_page.php']"));
+    // from contacthelper: click(By.xpath("//a[@href='edit.php?id="+ id +"']"));
+  }
+
+  public void goToManageUserPage() {
+    click(By.xpath("//a[@href='/mantisbt-2.25.0/manage_user_page.php']"));
+  }
+
+  public void selectUser(String user) {
+    click(By.xpath("//*[.='" + user + "'] "));
+  }
+
+  public void changePassword() {
+    click(By.cssSelector("input[value='Сбросить пароль']"));
+  }
+
 }

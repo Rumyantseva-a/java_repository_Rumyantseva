@@ -9,12 +9,11 @@ import rumyantseva.mantis.model.MailMessage;
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
-
 import static org.testng.Assert.assertTrue;
 
 public class RegistrationTests extends TestBase{
 
- // @BeforeMethod
+  @BeforeMethod
   public void startMailServer () {
     app.mail().start();
   }
@@ -29,8 +28,8 @@ public class RegistrationTests extends TestBase{
 
     app.registration().start(user, email);
 
-    //List<MailMessage> mailMessages = app.mail().waitForMail(2, 1000);
-    List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000);
+    List<MailMessage> mailMessages = app.mail().waitForMail(2, 1000);
+   //List<MailMessage> mailMessages = app.james().waitForMail(user, password, 120000);
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.registration().finish(confirmationLink, password);
     assertTrue(app.newSession().login(user, password));
@@ -44,7 +43,7 @@ public class RegistrationTests extends TestBase{
 
   }
 
-  //@AfterMethod(alwaysRun = true)
+  @AfterMethod(alwaysRun = true)
   public void stopMailServer () {
     app.mail().stop();
   }
