@@ -1,4 +1,4 @@
-package rumyantseva.mantis.tests;
+/*package rumyantseva.mantis.tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -6,6 +6,9 @@ import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import rumyantseva.mantis.appmanager.HttpSession;
 import rumyantseva.mantis.model.MailMessage;
+import rumyantseva.mantis.model.UserData;
+import rumyantseva.mantis.model.Users;
+
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
@@ -24,17 +27,20 @@ public class PasswordChangeTests extends TestBase{
     //HttpSession session = app.newSession();
     //assertTrue(session.login("administrator","root"));
 
-    String user = "userforchangepassword";
+    Users users = app.db().users();
+    UserData userForChangePassword = users.iterator().next();
+    //String user = "userforchangepassword";
     String password = "newpassword";
-    String email = "userforchangepassword@localhost.localdomain";
+    //String email = "userforchangepassword@localhost.localdomain";
+    String email = userForChangePassword.getEmail();
 
     app.registration().adminLogin("administrator","root");
-    app.registration().changeUsersPassword(user);
+    app.registration().changeUsersPassword(userForChangePassword);
 
     List<MailMessage> mailMessages = app.mail().waitForMail(1, 1000);
     String confirmationLink = findConfirmationLink(mailMessages, email);
     app.registration().finish(confirmationLink, password);
-    assertTrue(app.newSession().login(user, password));
+    assertTrue(app.newSession().login(email, password));
   }
 
   private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
@@ -51,5 +57,7 @@ public class PasswordChangeTests extends TestBase{
 
 
 }
+
+ */
 
 

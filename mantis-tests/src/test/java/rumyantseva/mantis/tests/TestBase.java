@@ -8,6 +8,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import rumyantseva.mantis.appmanager.ApplicationManager;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -15,7 +16,7 @@ import java.util.Arrays;
 
 public class TestBase {
 
-  Logger logger = LoggerFactory.getLogger(TestBase.class);
+Logger logger = LoggerFactory.getLogger(TestBase.class);
 
   protected static final ApplicationManager app
           = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
@@ -41,8 +42,5 @@ public class TestBase {
   public void logTestStop(Method m) {
     logger.info("Stop test " +m.getName());
   }
-
-
-
 
 }
