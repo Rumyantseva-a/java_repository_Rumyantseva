@@ -1,17 +1,16 @@
 package rumyantseva.mantis.appmanager;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.MatchResult;
 
 public class ApplicationManager {
 
@@ -22,6 +21,7 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
+  private SoapHelper soapHelper;
   //private DbHelper dbHelper;
 
 
@@ -107,5 +107,12 @@ public class ApplicationManager {
     }
     return dbHelper;
   } */
+
+  public SoapHelper soap() {
+    if (soapHelper == null) {
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
+  }
 
 }
