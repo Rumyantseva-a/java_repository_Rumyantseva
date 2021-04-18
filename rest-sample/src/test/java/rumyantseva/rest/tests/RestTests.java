@@ -18,13 +18,15 @@ import static org.testng.Assert.assertEquals;
 
 
 
-public class RestTests {
+public class RestTests extends TestBase{
 
   @Test
   public void testCreateIssue() throws IOException {
+    skipIfNotFixed (980);
     Set<Issue> oldIssues = getIssues();
-    Issue newIssue = new Issue().withSubject("Test2 issue Rumyantseva")
-            .withDescription("Test2 issue Rumyantseva description");
+    Issue newIssue = new Issue().withSubject("Test3 issue Rumyantseva")
+            .withDescription("Test2 issue Rumyantseva description")
+            .withStatus("Open");
     int issueId = createIssue(newIssue);
     Set<Issue> newIssues = getIssues();
     oldIssues.add(newIssue.withId(issueId));
