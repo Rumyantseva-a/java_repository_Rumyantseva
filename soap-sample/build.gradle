@@ -31,3 +31,7 @@ wsdl2java {
     //cxfVersion = "2.5.1"
     //cxfPluginVersion  = "2.4.0"
 }
+
+test {
+    useTestNG()
+}
