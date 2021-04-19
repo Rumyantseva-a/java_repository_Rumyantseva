@@ -1,18 +1,12 @@
 package rumyantseva.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import rumyantseva.addressbook.model.GroupData;
 import rumyantseva.addressbook.model.Groups;
 
-import java.util.Set;
-
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.*;
-import static org.testng.Assert.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupModification extends TestBase {
 
@@ -31,7 +25,7 @@ public class GroupModification extends TestBase {
     Groups before = app.db().groups();
     GroupData modifiedGroup = before.iterator().next();
     GroupData group = new GroupData()
-            .withId(modifiedGroup.getId()).withName("661odPuataya1").withHeader("Ghjhgjh").withFooter("lalala");
+            .withId(modifiedGroup.getId()).withName("5409odPuataya1").withHeader("Gh45gjh").withFooter("la23la");
     app.goTo().groupPage();
     app.group().modify(group);
     assertThat(app.group().count(), equalTo(before.size()));
