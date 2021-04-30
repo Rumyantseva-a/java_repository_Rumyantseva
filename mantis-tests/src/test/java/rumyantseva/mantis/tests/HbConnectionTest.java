@@ -1,4 +1,4 @@
-/*package rumyantseva.mantis.tests;
+package rumyantseva.mantis.tests;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,7 +8,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import rumyantseva.mantis.model.UserData;
-import rumyantseva.mantis.model.Users;
 
 import java.util.List;
 
@@ -32,23 +31,23 @@ public class HbConnectionTest {
     }
   }
 
-  @Test(enabled = false)
+  @Test
   public void testHbConnection() {
 
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List<Users> result = session.createQuery("from mantis_user_table where username != administrator").list();
+    List<UserData> result = session.createQuery("from UserData where username != 'administrator'").list();
 
     session.getTransaction().commit();
     session.close();
 
-    //for (UserData user : result) {
-    //  System.out.println(user);
-    //  System.out.println(user.getEmail());
-    //}
+    for (UserData user : result) {
+      System.out.println(user);
+      System.out.println(user.getEmail());
+      }
+
+    }
 
   }
 
-}
 
- */

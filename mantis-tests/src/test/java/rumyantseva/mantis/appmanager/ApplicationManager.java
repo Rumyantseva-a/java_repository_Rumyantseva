@@ -22,7 +22,7 @@ public class ApplicationManager {
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
   private SoapHelper soapHelper;
-  //private DbHelper dbHelper;
+  private DbHelper dbHelper;
 
 
   public ApplicationManager(String browser)  {
@@ -101,12 +101,12 @@ public class ApplicationManager {
     return jamesHelper;
   }
 
-  /*public DbHelper db() {
+  public DbHelper db() {
     if (dbHelper == null) {
       dbHelper = new DbHelper(this);
     }
     return dbHelper;
-  } */
+  }
 
   public SoapHelper soap() {
     if (soapHelper == null) {

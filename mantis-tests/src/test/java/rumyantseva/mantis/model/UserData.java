@@ -1,11 +1,11 @@
-/*package rumyantseva.mantis.model;
+package rumyantseva.mantis.model;
 
-import org.hibernate.annotations.Type;
-
-import javax.persistence.*;
-import java.util.HashSet;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
-import java.util.Set;
+@Entity
 
 @Table(name = "mantis_user_table")
 
@@ -19,11 +19,11 @@ public class UserData {
   private String username;
 
   @Column (name = "email")
-  @Type(type = "text")
+//  @Type(type = "text")
   private String email;
 
   @Column (name = "password")
-  @Type(type = "text")
+ // @Type(type = "text")
   private String password;
 
   public int getId() {
@@ -87,6 +87,3 @@ public class UserData {
   }
 
 }
-
-
- */

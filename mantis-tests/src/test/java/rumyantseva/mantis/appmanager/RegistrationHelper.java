@@ -1,7 +1,7 @@
 package rumyantseva.mantis.appmanager;
 
 import org.openqa.selenium.By;
-//import rumyantseva.mantis.model.UserData;
+import rumyantseva.mantis.model.UserData;
 
 public class RegistrationHelper extends HelperBase {
 
@@ -35,15 +35,13 @@ public class RegistrationHelper extends HelperBase {
     click(By.cssSelector("input[value='Вход']"));
   }
 
-  /*public void changeUsersPassword (UserData user) {
+  public void changeUsersPassword (UserData user) {
     goToManageOverviewPage();
     goToManageUserPage();
     selectUser(user);
     changePassword();
+
   }
-
-   */
-
 
   public void goToManageOverviewPage() {
     click(By.xpath("//a[@href='/mantisbt-2.25.0/manage_overview_page.php']"));
@@ -54,12 +52,11 @@ public class RegistrationHelper extends HelperBase {
     click(By.xpath("//a[@href='/mantisbt-2.25.0/manage_user_page.php']"));
   }
 
-  /*public void selectUser(UserData user) {
-    click(By.xpath("//*[.='" + user + "'] "));
+  public void selectUser(UserData user) {
+    click(By.xpath("//a[@href='manage_user_edit_page.php?user_id="+ user.getId() + "']"));
+ //           "//*[.='" + user.getId() + "'] "
   }
-
-
-   */
+//<a href="manage_user_edit_page.php?user_id=35">user1618568362290</a>
   public void changePassword() {
     click(By.cssSelector("input[value='Сбросить пароль']"));
   }

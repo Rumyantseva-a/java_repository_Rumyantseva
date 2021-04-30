@@ -1,4 +1,4 @@
-/*package rumyantseva.mantis.appmanager;
+package rumyantseva.mantis.appmanager;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,7 +26,7 @@ public class DbHelper {
   public Users users() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    List<UserData> result = session.createQuery("from mantis_user_table where username != administrator").list();
+    List<UserData> result = session.createQuery("from UserData where username != 'administrator'").list();
     session.getTransaction().commit();
     session.close();
     return new Users(result);
@@ -34,8 +34,6 @@ public class DbHelper {
 
 }
 
-
- */
 
 
 
