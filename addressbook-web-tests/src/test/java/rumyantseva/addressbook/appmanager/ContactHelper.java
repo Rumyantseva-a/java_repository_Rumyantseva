@@ -1,18 +1,14 @@
 package rumyantseva.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import rumyantseva.addressbook.model.ContactData;
 import rumyantseva.addressbook.model.Contacts;
 import rumyantseva.addressbook.model.GroupData;
-import rumyantseva.addressbook.model.Groups;
-import com.google.common.collect.ForwardingSet;
-import java.util.ArrayList;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -76,6 +72,7 @@ public class ContactHelper extends HelperBase{
     assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
   }
 
+
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
@@ -84,15 +81,16 @@ public class ContactHelper extends HelperBase{
     click(By.name("firstname"));
   }
 
-  public void initContactModification() {
-    click(By.xpath("//img[@alt='Edit']"));
-  }
+  //public void initContactModification() {
+  //  click(By.xpath("//img[@alt='Edit']"));
+  //}
+
   public void initContactModification(int id) {
     click(By.xpath("//a[@href='edit.php?id="+ id +"']"));
   }
 
   public void submitContactModification() {
-   // click(By.name("update"));
+    // click(By.name("update"));
     click(By.xpath("(//input[@name='update'])[2]"));
   }
 
